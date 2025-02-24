@@ -39,6 +39,6 @@ jobs:
         with:
           project: "lenn-libraryastr"
           entrypoint: "server/entry.mjs"
-          root: "dist"
+          root: "dist/client"
           
           
