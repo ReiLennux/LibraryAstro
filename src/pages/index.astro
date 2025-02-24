@@ -1,11 +1,20 @@
 ---
-import Welcome from '../components/Welcome.astro';
 import Layout from '../layouts/Layout.astro';
-
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+import book from '../assets/Enchanting_Table.gif';
+import Book from '../components/book.astro';
+import BookContent from '../components/BookContent.vue';
 ---
 
 <Layout>
-	<Welcome />
+
+  <main class="m-4">
+    <div class="flex justify-center items-center gap-16 py-20">
+      <h1 class="text-6xl font-extrabold text-center">
+        Astro
+        <span class="block">Library</span>
+      </h1>
+      <img class="h-28 w-auto" src={book.src} alt="Book Image">
+    </div>
+  </main>
+  <BookContent client:load/>
 </Layout>
