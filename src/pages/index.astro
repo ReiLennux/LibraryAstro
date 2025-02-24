@@ -1,20 +1,32 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import book from '../assets/Enchanting_Table.gif';
-import Book from '../components/book.astro';
 import BookContent from '../components/BookContent.vue';
+
+export const prerender = true;
+
+const getBooks = async () => {
+  const res = await fetch(import.meta.env.URL_DE_LA_API);
+  const books = await res.json();
+  return books;
+};
+
+// Esperamos la respuesta antes de pasarla al componente
+const books = await getBooks();
 ---
 
 <Layout>
-
   <main class="m-4">
     <div class="flex justify-center items-center gap-16 py-20">
       <h1 class="text-6xl font-extrabold text-center">
         Astro
         <span class="block">Library</span>
       </h1>
-      <img class="h-28 w-auto" src={book.src} alt="Book Image">
+      <img transition:name="image-book" class="h-28 w-auto" src={book.src} alt="Book Image">
     </div>
   </main>
-  <BookContent client:load/>
+
+  <!-- Ahora pasamos la lista de libros ya resuelta -->
+  <BookContent books={[...books]} />
+
 </Layout>
