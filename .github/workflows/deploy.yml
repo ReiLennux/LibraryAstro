@@ -41,7 +41,7 @@ jobs:
         uses: denoland/deployctl@v1
         with:
           project: "lenn-libraryastr"
-          entrypoint: "server/entry.mjs"
+          entrypoint: "dist/server/entry.mjs"
           root: ""
           
           
