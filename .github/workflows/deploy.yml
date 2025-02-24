@@ -9,6 +9,9 @@ jobs:
   deploy:
     name: Deploy
     runs-on: ubuntu-latest
+    env:
+      VITE_URL_DE_LA_API: "http://lenn343.somee.com/api/LibroMaterial/"
+
 
     permissions:
       id-token: write # Needed for auth with Deno Deploy

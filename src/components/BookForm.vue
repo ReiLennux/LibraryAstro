@@ -25,6 +25,7 @@ const handleSubmit = async () => {
 <template>
 
     <form class="space-y-6" @submit.prevent="handleSubmit">
+      
       <div>
         <label for="titulo" class="block mb-2 text-sm font-medium">Title</label>
         <input type="text" v-model="titulo" id="titulo" class="border text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 bg-gray-600 border-gray-500 placeholder-gray-400 text-white" placeholder="Book's title" required />
@@ -32,11 +33,6 @@ const handleSubmit = async () => {
       <div>
         <label for="fechaPublicacion" class="block mb-2 text-sm font-medium">Publication Date</label>
         <input type="date" v-model="fechaPublicacion" id="fechaPublicacion" class="border text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 bg-gray-600 border-gray-500 placeholder-gray-400 text-white" required />
-      </div>
-
-      <div>
-        <label for="libreriaMateriaId" class="block mb-2 text-sm font-medium">LibreriaMateriaId</label>
-        <input type="text" v-model="libreriaMateriaId" id="libreriaMateriaId" class="border text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 bg-gray-600 border-gray-500 placeholder-gray-400 text-white" placeholder="LibreriaMateriaId" required />
       </div>
 
       <button type="submit" class="w-full text-white focus:ring-4 focus:outline-none font-medium rounded-lg text-sm px-5 py-2.5 text-center bg-green-600 hover:bg-green-700 focus:ring-green-800">Add Book</button>

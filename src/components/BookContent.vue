@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { defineProps } from 'vue';
 import type { Book } from '../lib/api';
 import imageSrc from '../assets/Enchanting_Book.gif';
 
