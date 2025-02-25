@@ -24,6 +24,6 @@ const books = await getBooks();
       <img transition:name="image-book" class="h-28 w-auto" src={book.src} alt="Book Image">
     </div>
   </main>
-  <BookContent books={books} />
+  <BookContent books={books} server:defer />
 
 </Layout>
