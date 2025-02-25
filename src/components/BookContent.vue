@@ -11,6 +11,7 @@ function formatDate(dateString: string): string {
 }
 
 const props = defineProps<{ books: Book[] }>();
+console.log(props.books);
 </script>
 
 <template>
