@@ -21,7 +21,7 @@ export async function getBooks(): Promise<Book[]> {
   
   // Crear un nuevo libro
   export async function createBook(book: Book): Promise<void> {
-    const response = await fetch(API_URL, {
+    const response = await fetch("https://lenn343.somee.com/api/LibroMaterial/", {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(book),
