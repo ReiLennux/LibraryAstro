@@ -4,6 +4,7 @@ import { ref } from 'vue';
 const titulo = ref('');
 const fechaPublicacion = ref('');
 const libreriaMateriaId = ref('');
+const success = ref(false);
 
 const handleSubmit = async () => {
   try {
@@ -18,16 +19,19 @@ const handleSubmit = async () => {
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(newBook),
     });
-  
+
     if (!response.ok) {
       throw new Error('Error al crear el libro');
     }
-  
-    if (response.status === 204) {
-      console.log('Libro creado, pero sin respuesta.');
-    }
-  
+
     console.log('Libro creado correctamente');
+    success.value = true;
+    
+    setTimeout(() => {
+      success.value = false;
+    }, 5000);
+
+    
   } catch (error) {
     console.error('Error al crear el libro:', error);
   }
@@ -35,18 +39,31 @@ const handleSubmit = async () => {
 </script>
 
 <template>
+  <form class="space-y-6" @submit.prevent="handleSubmit">
 
-    <form class="space-y-6" @submit.prevent="handleSubmit">
-      
-      <div>
-        <label for="titulo" class="block mb-2 text-sm font-medium">Title</label>
-        <input type="text" v-model="titulo" id="titulo" class="border text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 bg-gray-600 border-gray-500 placeholder-gray-400 text-white" placeholder="Book's title" required />
-      </div>
-      <div>
-        <label for="fechaPublicacion" class="block mb-2 text-sm font-medium">Publication Date</label>
-        <input type="date" v-model="fechaPublicacion" id="fechaPublicacion" class="border text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 bg-gray-600 border-gray-500 placeholder-gray-400 text-white" required />
-      </div>
+    <div>
+      <label for="titulo" class="block mb-2 text-sm font-medium">Title</label>
+      <input type="text" v-model="titulo" id="titulo" 
+        class="border text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 bg-gray-600 border-gray-500 placeholder-gray-400 text-white"
+        placeholder="Book's title" required />
+    </div>
+    <div>
+      <label for="fechaPublicacion" class="block mb-2 text-sm font-medium">Publication Date</label>
+      <input type="date" v-model="fechaPublicacion" id="fechaPublicacion"
+        class="border text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 bg-gray-600 border-gray-500 placeholder-gray-400 text-white"
+        required />
+    </div>
 
-      <button type="submit" class="w-full text-white focus:ring-4 focus:outline-none font-medium rounded-lg text-sm px-5 py-2.5 text-center bg-green-600 hover:bg-green-700 focus:ring-green-800">Add Book</button>
-    </form>
+    <button type="submit"
+      class="w-full text-white focus:ring-4 focus:outline-none font-medium rounded-lg text-sm px-5 py-2.5 text-center bg-green-600 hover:bg-green-700 focus:ring-green-800">Add
+      Book</button>
+  </form>
+  <div id="alert-1" v-if="success"
+    class="mt-4 flex items-center p-4 mb-4 rounded-lg bg-green-800 text-green-400"
+    role="alert">
+    <span class="sr-only">Info</span>
+    <div class="ms-3 text-sm font-medium">
+      Se agrego correctamente!
+    </div>
+  </div>
 </template>

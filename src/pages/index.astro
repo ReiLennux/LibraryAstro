@@ -17,7 +17,7 @@ import BookContent from '../components/BookContent.vue';
     </div>
   </main>
   <BookContent server:defer>
-      <span class="text-xl opacity-70">Searching in the Library</span>
+      <span slot="fallback" class="text-xl opacity-70">Searching in the Library...</span>
     </BookContent>
 
 </Layout>
