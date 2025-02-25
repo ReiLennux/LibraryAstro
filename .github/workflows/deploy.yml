@@ -10,7 +10,6 @@ jobs:
     name: Deploy
     runs-on: ubuntu-latest
 
-
     permissions:
       id-token: write # Needed for auth with Deno Deploy
       contents: read # Needed to clone the repository
@@ -38,8 +37,8 @@ jobs:
       - name: Upload to Deno Deploy
         uses: denoland/deployctl@v1
         with:
-          project: "lenn-libraryastr"
-          entrypoint: "dist/server/entry.mjs"
-          root: ""
+          project: "lenn-libraryastr-48"
+          entrypoint: "server/entry.mjs"
+          root: "dist"
           
           
