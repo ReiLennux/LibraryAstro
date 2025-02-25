@@ -1,4 +1,4 @@
-export const API_URL = 'https://lenn343.somee.com/api/LibroMaterial/';
+export const API_URL = import.meta.env.URL_DE_LA_API;
 
 
 // Obtener lista de libros
