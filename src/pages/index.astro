@@ -11,7 +11,6 @@ const getBooks = async () => {
   return books;
 };
 
-// Esperamos la respuesta antes de pasarla al componente
 const books = await getBooks();
 ---
 
@@ -25,8 +24,6 @@ const books = await getBooks();
       <img transition:name="image-book" class="h-28 w-auto" src={book.src} alt="Book Image">
     </div>
   </main>
-
-  <!-- Ahora pasamos la lista de libros ya resuelta -->
-  <BookContent books={[...books]} />
+  <BookContent books={books} />
 
 </Layout>

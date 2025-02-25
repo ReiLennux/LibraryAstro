@@ -2,7 +2,6 @@ export const API_URL = 'http://lenn343.somee.com/api/LibroMaterial/';
 
 // Obtener lista de libros
 export async function getBooks(): Promise<Book[]> {
-  console.log("entro a getlibros")
     const response = await fetch(API_URL);
     if (!response.ok) {
       throw new Error('Error al obtener los libros');

@@ -10,7 +10,6 @@ function formatDate(dateString: string): string {
   return `${day}/${month}/${year}`;
 }
 
-// Definir el prop "books" de tipo Book[]
 const props = defineProps<{ books: Book[] }>();
 </script>
 
