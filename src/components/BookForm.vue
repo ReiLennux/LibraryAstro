@@ -13,7 +13,6 @@ const handleSubmit = async () => {
       libreriaMateriaId: libreriaMateriaId.value,
       AutorLibro: 'd5b67494-da20-4aa1-a718-20d69f84c8eb'
     };
-    console.log("entro al createBook")
     const response = await fetch("https://lenn343.somee.com/api/LibroMaterial/", {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },

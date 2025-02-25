@@ -10,13 +10,18 @@ function formatDate(dateString: string): string {
   return `${day}/${month}/${year}`;
 }
 
-const props = defineProps<{ books: Book[] }>();
+const getBooks = async () => {
+  const res = await fetch("https://lenn343.somee.com/api/LibroMaterial/");
+  const books = await res.json();
+  return books;
+};
+const books = await getBooks();
 </script>
 
 <template>
   <div class="justify-center items-center flex flex-wrap gap-6">
     <div
-      v-for="(book) in props.books"
+      v-for="(book) in books"
       :key="book.libreriaMateriaId"
       class="flex flex-col items-center w-96 bg-gray-800 hover:bg-gray-700 rounded-lg shadow-lg transform hover:scale-105 transition-all duration-300"
     >

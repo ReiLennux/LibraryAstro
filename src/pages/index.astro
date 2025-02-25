@@ -3,17 +3,7 @@ import Layout from '../layouts/Layout.astro';
 import book from '../assets/Enchanting_Table.gif';
 import BookContent from '../components/BookContent.vue';
 
-export const prerender = true;
 
-const getBooks = async () => {
-  console.log("entro al getBooks...");
-  const res = await fetch("https://lenn343.somee.com/api/LibroMaterial/");
-  const books = await res.json();
-  console.log(books);
-  return books;
-};
-
-const books = await getBooks();
 ---
 
 <Layout>
@@ -26,6 +16,8 @@ const books = await getBooks();
       <img transition:name="image-book" class="h-28 w-auto" src={book.src} alt="Book Image">
     </div>
   </main>
-  <BookContent books={books} server:defer />
+  <BookContent server:defer>
+      <span class="text-xl opacity-70">Searching in the Library</span>
+    </BookContent>
 
 </Layout>
