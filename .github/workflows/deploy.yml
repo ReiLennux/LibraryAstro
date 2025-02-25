@@ -9,8 +9,6 @@ jobs:
   deploy:
     name: Deploy
     runs-on: ubuntu-latest
-    env:
-      VITE_URL_DE_LA_API: "https://lenn343.somee.com/api/LibroMaterial/"
 
 
     permissions:
