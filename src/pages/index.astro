@@ -6,8 +6,10 @@ import BookContent from '../components/BookContent.vue';
 export const prerender = true;
 
 const getBooks = async () => {
+  console.log("entro al getBooks");
   const res = await fetch("https://lenn343.somee.com/api/LibroMaterial/");
   const books = await res.json();
+  console.log(books);
   return books;
 };
 
