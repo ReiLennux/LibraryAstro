@@ -6,7 +6,7 @@ import BookContent from '../components/BookContent.vue';
 export const prerender = true;
 
 const getBooks = async () => {
-  const res = await fetch(import.meta.env.VITE_URL_DE_LA_API);
+  const res = await fetch("https://lenn343.somee.com/api/LibroMaterial/");
   const books = await res.json();
   return books;
 };

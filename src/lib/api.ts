@@ -1,4 +1,4 @@
-export const API_URL = import.meta.env.VITE_URL_DE_LA_API;
+export const API_URL = "https://lenn343.somee.com/api/LibroMaterial/";
 
 
 // Obtener lista de libros
