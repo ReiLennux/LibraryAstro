@@ -1,4 +1,5 @@
-export const API_URL = 'http://lenn343.somee.com/api/LibroMaterial/';
+export const API_URL = 'https://lenn343.somee.com/api/LibroMaterial/';
+
 
 // Obtener lista de libros
 export async function getBooks(): Promise<Book[]> {
