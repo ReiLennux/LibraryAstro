@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { ref } from 'vue';
-import { createBook } from '../lib/api';
 
 const titulo = ref('');
 const fechaPublicacion = ref('');
@@ -14,7 +13,21 @@ const handleSubmit = async () => {
       libreriaMateriaId: libreriaMateriaId.value,
       AutorLibro: 'd5b67494-da20-4aa1-a718-20d69f84c8eb'
     };
-    await createBook(newBook);
+    console.log("entro al createBook")
+    const response = await fetch("https://lenn343.somee.com/api/LibroMaterial/", {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(newBook),
+    });
+  
+    if (!response.ok) {
+      throw new Error('Error al crear el libro');
+    }
+  
+    if (response.status === 204) {
+      console.log('Libro creado, pero sin respuesta.');
+    }
+  
     console.log('Libro creado correctamente');
   } catch (error) {
     console.error('Error al crear el libro:', error);
