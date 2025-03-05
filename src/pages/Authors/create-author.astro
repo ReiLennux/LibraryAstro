@@ -1,0 +1,10 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import AuthorForm from '../../components/AuthorForm.vue';
+---
+
+<Layout>
+  <div class="flex justify-center items-center h-screen w-full">
+    <AuthorForm client:load></AuthorForm>
+  </div>
+</Layout>
