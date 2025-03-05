@@ -36,7 +36,7 @@ const authors = await getAuthors();
   <div class="justify-center items-center flex flex-wrap gap-6">
     <div v-for="(author) in authors.reverse()" :key="author.AutorLibroId"
       class="">
-      <a :href="'Authors/AuthorDetails/'+ author.autorLibroGuid" class="flex flex-col items-center w-96 bg-gray-800 hover:bg-gray-700 rounded-lg shadow-lg transform hover:scale-105 transition-all duration-300">
+      <a :href="'Authors/AuthorDetails/'+ author.autorLibroId" class="flex flex-col items-center w-96 bg-gray-800 hover:bg-gray-700 rounded-lg shadow-lg transform hover:scale-105 transition-all duration-300">
         <img class="m-4 h-48 w-48 object-cover rounded-lg" :src="getRandomHelmet()" alt="Libro imagen" />
         <div class="flex flex-col justify-between p-4 leading-normal">
           <h5 class="text-2xl font-semibold text-white truncate">{{ author.nombre + " " + author.apellido }}</h5>
