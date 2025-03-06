@@ -14,13 +14,14 @@ import BookContent from '../components/BookContent.vue';
       </h1>
       <img transition:name="image-book" class="h-28 w-auto" src={book.src} alt="Book Image">
     </div>
-  </main>
-  <div class="flex justify-end items-center gap-16 py-20">
+      <div class="flex justify-end items-center gap-16 p-20">
     <a href="create-book" class="text-green-500 border border-green-500 rounded-lg hover:text-white dark:hover:bg-green-600 px-5 py-2.5 text-center me-2 mb-2 text-sm">
       Add Book
 
     </a>
   </div>
+  </main>
+
   <BookContent server:defer>
       <span slot="fallback" class="text-xl opacity-70">Searching in the Library...</span>
   </BookContent>

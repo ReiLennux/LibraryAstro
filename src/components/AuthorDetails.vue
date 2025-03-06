@@ -29,16 +29,16 @@ const author = await getAuthors();
             {{ author.nombre }} {{ author.apellido }}
         </h2>
         <p class="text-gray-600">
-            Fecha de nacimiento:{{ " " }}
+            BirthDay:{{ " " }}
             {{ new Date(author.fechaNacimiento).toLocaleDateString() }}
         </p>
 
         <div class="mt-4 w-96">
-            <h2 class="text-xl font-semibold mb-2">Grados académicos:</h2>
+            <h2 class="text-xl font-semibold mb-2">Academic Grades:</h2>
             <ul class="space-y-2">
                 <li v-for="grado in author.gradosAcademicos" :key="grado.gradoAcademicoId">
                     <p class="font-medium">{{ grado.nombre }}</p>
-                    <p class="text-sm">Otorgado por: {{ grado.centroAcademico }}</p>
+                    <p class="text-sm">awarded by: {{ grado.centroAcademico }}</p>
                     <p class="text-xs text-gray-500">
                         {{ new Date(grado.fechaGrado).toLocaleDateString() }}
                     </p>

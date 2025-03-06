@@ -53,7 +53,15 @@ const formatDate = (date: string) => new Date(date).toLocaleDateString();
 </script>
 
 <template>
-  <div class="w-2/4 mx-auto grid grid-cols-2 grid-rows-2 gap-4">
+  <div class="w-2/4 mx-auto grid grid-cols-2 grid-rows-3 gap-4">
+    
+    <div id="alert-1" v-if="success" class="w-full col-span-2 mt-4 flex items-center p-4 mb-4 rounded-lg bg-green-800 text-green-400"
+    role="alert">
+    <span class="sr-only">Info</span>
+    <div class="ms-3 text-sm font-medium">
+      Se agrego correctamente!
+    </div>
+  </div>
     <!-- Primer div -->
     <div class="p-4 border rounded-lg shadow-sm sm:p-6 md:p-8 bg-gray-900 border-gray-700">
       <div class="flex justify-start items-start">
