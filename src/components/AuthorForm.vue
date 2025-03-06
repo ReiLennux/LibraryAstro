@@ -9,8 +9,8 @@ const nuevoGrado = ref({ nombre: '', centroAcademico: '', fechaGrado: '' });
 
 function agregarGrado () {
   if (nuevoGrado.value.nombre && nuevoGrado.value.centroAcademico && nuevoGrado.value.fechaGrado) {
-    gradosAcademicos.value.push({ ...nuevoGrado.value }); // Clonar objeto para evitar referencias
-    nuevoGrado.value = { nombre: '', centroAcademico: '', fechaGrado: '' }; // Reset
+    gradosAcademicos.value.push({ ...nuevoGrado.value }); 
+    nuevoGrado.value = { nombre: '', centroAcademico: '', fechaGrado: '' };
   }
 };
 
@@ -30,20 +30,17 @@ const handleSubmit = async () => {
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(newAuthor),
     });
-    console.log(newAuthor);
 
     if (!response.ok) {
       throw new Error('Error al crear el autor');
     }
-
-    console.log('Autor creado correctamente');
     success.value = true;
-    
     setTimeout(() => {
       success.value = false;
     }, 5000);
-
-    
+    nombre.value='';
+    apellido.value='';
+    fechaNacimiento.value='';
   } catch (error) {
     console.error('Error al crear el libro:', error);
   }
@@ -62,7 +59,6 @@ const formatDate = (date: string) => new Date(date).toLocaleDateString();
       Se agrego correctamente!
     </div>
   </div>
-    <!-- Primer div -->
     <div class="p-4 border rounded-lg shadow-sm sm:p-6 md:p-8 bg-gray-900 border-gray-700">
       <div class="flex justify-start items-start">
         <a href="/Authors" class="px-3 py-2 text-xs font-medium text-center rounded-lg dark:bg-gray-900 dark:hover:bg-gray-800">
@@ -100,8 +96,6 @@ const formatDate = (date: string) => new Date(date).toLocaleDateString();
         </button>
       </form>
     </div>
-
-    <!-- Segundo div -->
     <div class="p-4 border rounded-lg shadow-sm sm:p-6 md:p-8 bg-gray-900 border-gray-700">
       <div class="mt-6 ">
         <h2 class="text-lg font-semibold text-white flex flex-col justify-center items-center">Academic Grades</h2>
@@ -132,7 +126,6 @@ const formatDate = (date: string) => new Date(date).toLocaleDateString();
       </div>
     </div>
 
-    <!-- Tercer div -->
     <div class="col-span-2 p-4 border rounded-lg shadow-sm sm:p-6 md:p-8 bg-gray-900 border-gray-700">
       
         <h2 class="text-lg font-semibold text-white">Author's Academic Grades</h2>

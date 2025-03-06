@@ -3,6 +3,7 @@ import { ref, watch } from 'vue';
 const titulo = ref('');
 const fechaPublicacion = ref('');
 const libreriaMateriaId = ref('');
+const AutorLibro = ref('');
 const success = ref(false);
 import pkg from 'lodash';
 const {debounce} = pkg;
@@ -20,12 +21,12 @@ const getAuthors = async () => {
 
 const searchQuery = ref("");
 
-// Función con debounce (con setTimeout)
+// Función con debounce
 const debouncedSearch = debounce((query) => {
   console.log("Buscando:", query);
-}, 500); // Espera 500ms antes de ejecutar la búsqueda
+}, 500); 
 
-// Watch para ejecutar la búsqueda con debounce
+
 watch(searchQuery, (newQuery) => {
   debouncedSearch(newQuery);
 });
@@ -39,8 +40,9 @@ const handleSubmit = async () => {
       titulo: titulo.value,
       fechaPublicacion: fechaPublicacion.value,
       libreriaMateriaId: libreriaMateriaId.value,
-      AutorLibro: 'd5b67494-da20-4aa1-a718-20d69f84c8eb'
+      AutorLibro: AutorLibro.value
     };
+    console.log(newBook);
     const response = await fetch("https://lenn343.somee.com/api/LibroMaterial/", {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
@@ -53,7 +55,9 @@ const handleSubmit = async () => {
 
     console.log('Libro creado correctamente');
     success.value = true;
-
+    titulo.value = '';
+    fechaPublicacion.value='';
+    libreriaMateriaId.value = '';
     setTimeout(() => {
       success.value = false;
     }, 5000);
@@ -81,12 +85,12 @@ const handleSubmit = async () => {
         required />
     </div>
     <div>
-      <label for="AutorLibroGuid" class="block mb-2 text-sm font-medium">Author</label>
-      <select name="" id="" required
+      <label for="AutorLibro" class="block mb-2 text-sm font-medium">Author</label>
+      <select name="AutorLibro" id="AutorLibro" required v-model="AutorLibro"
         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-        <input type="text" name="" id="" v-model="searchQuery">
-        <option selected value="">Choose an author</option>
-        <option v-for="author in authors" :value="author.AutorLibroGuid">{{ author.nombre }} {{ author.apellido }}
+        <option value="" disabled selected>Choose an author</option>
+        <option v-for="author in authors" :key="author.autorLibroGuid" :value="author.autorLibroGuid">
+          {{ author.nombre }} {{ author.apellido }}
         </option>
       </select>
     </div>
